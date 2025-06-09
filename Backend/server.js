@@ -24,13 +24,13 @@ const todoSchema = new mongoose.Schema({
 });
 const Todo = mongoose.model("Todo", todoSchema);
 
-// ✅ GET: Fetch all todos
+// GET: Fetch all todos
 app.get("/api/todos", async (req, res) => {
   const todos = await Todo.find();
   res.json(todos);
 });
 
-// ✅ POST: Add a new todo
+//  POST: Add a new todo
 app.post("/api/todos", async (req, res) => {
   const { text } = req.body;
   const newTodo = new Todo({ text });
@@ -38,14 +38,14 @@ app.post("/api/todos", async (req, res) => {
   res.json(newTodo);
 });
 
-// ✅ DELETE: Delete a todo
+// DELETE: Delete a todo
 app.delete("/api/todos/:id", async (req, res) => {
   const { id } = req.params;
   await Todo.findByIdAndDelete(id);
   res.json({ message: "Todo Deleted" });
 });
 
-// ✅ Start server
+//  Start server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
